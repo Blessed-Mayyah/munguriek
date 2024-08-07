@@ -1,5 +1,5 @@
 name: To_Do Application
-run-name: Testing 
+run-name: Tests
 on:
   push:
     branches: ["master"]
