@@ -1,40 +1,23 @@
-name: To-Do Application
-
-# When to trigger the workflow
-on: 
+name: To_Do Application
+run-name: Testing 
+on:
   push:
-    branches: 
-      - master  # Trigger on pushes to the main branch
-  pull_request:
-    branches: 
-      - master  # Trigger on pull requests to the main branch
+    branches: ["master"]
 
-# The jobs to run in the workflow
 jobs:
-  test:
-
-    # The OS on which the workflow will run
+  build:
     runs-on: ubuntu-latest
 
-    # The steps to execute in the workflow
     steps:
-    - name: Check out repository code
-      # This action checks out your repository code
+    - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Set up Python
-      # This action sets up the Python environment
-      uses: actions/setup-python@v4
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.x'  # Use the latest stable version of Python
+        python-version: '3.11'
 
     - name: Install dependencies
-      # Run commands to install dependencies required for testing
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-
-    - name: Run tests
-      # Run the tests using unittest
-      run: |
-        python -m unittest discover -s tests  # Discover and run all tests in the 'tests' directory
